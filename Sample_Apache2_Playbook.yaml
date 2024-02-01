@@ -1,0 +1,21 @@
+---
+ - hosts: all/web1
+   become: true
+   gaher-facts: yes
+   handlers:
+    - name:restart
+      service: 
+        name: Apache2/httpd
+        state: restart     
+   tasks:
+     - name: update servers
+       shell: apt update
+     - name: install Apache2
+       shell: apt install Apache2 -y or
+       apt: name=Apache2 state=present
+     - name:stop service
+       service: name=Apache2 state=stopped enabled=no
+     - notify: restart
+
+# Apache2 for RPM class packages
+# httpd for Debian packages
