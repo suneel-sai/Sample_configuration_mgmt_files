@@ -6,8 +6,7 @@
     - name:restart
       service: 
         name: nginx
-        state: restart
-        
+        state: restart     
    tasks:
      - name: update servers
        shell: apt update
