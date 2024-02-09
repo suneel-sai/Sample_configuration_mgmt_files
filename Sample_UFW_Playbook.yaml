@@ -1,0 +1,27 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Update firewall rules for web servers
+      ufw:
+        rule: allow
+        port: 80
+        proto: tcp
+        state: present
+
+    - name: Update firewall rules for app servers
+      ufw:
+        rule: allow
+        port: 8080
+        proto: tcp
+        state: present
+
+    - name: Update firewall rules for database servers
+      ufw:
+        rule: allow
+        port: 8090
+        proto: tcp
+        state: present
+
+    - name: Ensure all firewall rules are active
+      ufw:
+        state: enabled
